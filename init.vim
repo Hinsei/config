@@ -2,6 +2,13 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 source ~/.vimrc
 
+" Change cursor to underline
+set guicursor+=n:hor20-Cursor/lCursor-blinkwait300-blinkon200-blinkoff150
+
+" Change matching brackets color
+highlight MatchParen ctermbg=White ctermfg=black
+
+
 " Remaps esc key to jk combo 
 inoremap jk <Esc>
 
@@ -46,8 +53,12 @@ let g:python3_host_prog = '/usr/bin/python3'
 " Any fold config
 filetype plugin indent on
 syntax on
-let anyfold_activate=1
+autocmd Filetype * AnyFoldActivate
 set foldlevel=0
+highlight Folded ctermbg=White ctermfg=Black
+
+" ocp-indent
+autocmd FileType ocaml source /home/aiman/.opam/default/share/ocp-indent/vim/indent/ocaml.vim
 
 call plug#begin()
   Plug 'elixir-editors/vim-elixir'
@@ -58,7 +69,6 @@ call plug#begin()
   Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
   Plug 'junegunn/fzf.vim'
   Plug 'godlygeek/tabular'
-  Plug 'rgrinberg/vim-ocaml'
   Plug 'wlangstroth/vim-racket'
   Plug 'leafgarland/typescript-vim'
   Plug 'fsharp/vim-fsharp', {
@@ -69,4 +79,6 @@ call plug#begin()
   Plug 'scrooloose/nerdcommenter'
   Plug 'tomlion/vim-solidity'
   Plug 'pseewald/vim-anyfold'
+  Plug 'posva/vim-vue'
+  Plug 'dart-lang/dart-vim-plugin'
 call plug#end()
